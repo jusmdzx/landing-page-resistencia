@@ -1,6 +1,7 @@
 # Visibilidade Que Transforma 
 
 Landing Page desenvolvida para apresentar um panorama real sobre as barreiras e a resistência da comunidade LGBTQIAPN+ no mercado de trabalho. O projeto foca em alto impacto visual, acessibilidade e design voltado para conscientização.
+PSAI, 2026, SENAI ARARIPINA. 
 
 ## 🎨 UI/UX Design
 
