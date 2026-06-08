@@ -1,0 +1,280 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIÁVEIS GLOBAIS (A IDENTIDADE VISUAL) */
+:root {
+    /* Cores Neon (Atitude e Destaque) */
+    --neon-cyan: #00E5FF;
+    --neon-magenta: #FF007F;
+    --neon-purple: #9D00FF;
+    
+    /* Tons de Fundo (A Atmosfera Dark) */
+    --bg-dark: #0D0D0D;    /* Fundo principal da página */
+    --bg-darker: #111111;  /* Fundo para destacar o CTA final */
+    
+    /* Tipografia (Contraste) */
+    --text-white: #FFFFFF;
+    --text-gray: #CCCCCC;
+    
+    /* Fontes */
+    --font-primary: 'Inter', sans-serif; /* Altere para a sua fonte */
+}
+
+/* ESTILOS GLOBAIS BASE */
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    overflow-x: hidden; /* Fundamental para evitar que a tela balance para os lados */
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: 
+        linear-gradient(to bottom, rgba(13, 13, 13, 0.2), rgba(13, 13, 13, 1)),
+        url('visibilidade_que_transforma.png');
+    background-size: 200%;
+    background-position: center 30%;
+    padding: 0 5%;
+}
+
+
+.hero-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    max-width: 600px;
+}
+
+.hero-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 5%;
+    border-top: 1px dashed var(--neon-cyan);
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.text-neon-cyan {
+    color: var(--neon-cyan);
+}
+
+/* BLOCO DE DADOS */
+
+.panorama-dados {
+    padding: 80px 5%;
+   
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+}
+
+.card {
+    background-color: #161616;
+    padding: 30px;
+    border-top: 3px solid var(--neon-magenta);
+    border-radius: 4px;
+}
+
+.card h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.card span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--neon-cyan);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+}
+
+/* SESSÃO IMPACTO E BARREIRAS */
+
+.impacto-barreiras {
+    padding: 100px 5%;
+    width: 100%;
+}
+
+.container-barreiras {
+     max-width: 1000px;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+     gap: 80px;
+}
+
+.bloco-texto{
+    width: 100%;
+    max-width: 450px;
+    padding: 0 0 20px 20px;
+
+    border-left: 1px dashed var(--neon-cyan);
+    border-bottom: 1px dashed var(--neon-cyan);
+
+}
+
+.bloco-texto h3 {
+    color: var(--neon-cyan);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.destaque-numero {
+    font-size: 5rem;
+    color: var(--neon-cyan);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.bloco-texto.direita {
+    margin-left: auto; 
+}
+
+/* PONTE HISTÓRICA (A Introdução de Junho) */
+
+.ponte-historica {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.texto-ponte {
+    max-width: 600px;
+    margin: 0 auto; /* Centraliza a caixa criando o "funil" visual */
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.text-neon-magenta { color: var(--neon-magenta); font-weight: bold; }
+.text-neon-cyan { color: var(--neon-cyan); font-weight: bold; }
+
+/* A LINHA DO TEMPO HISTÓRICA */
+
+.linha-do-tempo {
+    padding: 50px 5% 100px;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/*  A LINHA CENTRAL */
+
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #333; /* Cor da linha apagada no fundo */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Crava a linha exatamente no meio da tela */
+}
+
+/* O ESQUELETO DE CADA ANO */
+
+.timeline-item {
+    position: relative;
+    width: 50%; /* Cada bloco ocupa só metade da tela */
+    padding: 20px 40px;
+    z-index: 1; /* Garante que o texto fique por cima da linha */
+}
+
+/* JOGANDO PARA OS LADOS */
+.timeline-item.esquerda {
+    left: 0;
+    text-align: right; /* O texto da esquerda alinha para a direita, colando na linha central */
+}
+
+.timeline-item.direita {
+    left: 50%; /* Empurra a caixa para começar na metade da tela */
+    text-align: left;
+}
+
+/* 🟢 AS BOLINHAS NEON (Os Pontos) */
+.timeline-ponto {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    top: 35px; /* Alinha a bolinha com o título do ano */
+    z-index: 2; /* Deixa a bolinha por cima da linha central */
+}
+
+/* Grudando a bolinha exatamente em cima da linha central */
+.timeline-item.esquerda .timeline-ponto { right: -8px; }
+.timeline-item.direita .timeline-ponto { left: -8px; }
+
+/* O Brilho (O efeito LED) */
+.timeline-ponto.magenta {
+    background-color: var(--neon-magenta);
+    box-shadow: 0 0 15px var(--neon-magenta);
+}
+
+.timeline-ponto.ciano {
+    background-color: var(--neon-cyan);
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* A TIPOGRAFIA DA LINHA DO TEMPO */
+.timeline-conteudo h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+/* Cores dos anos dependendo do lado */
+.timeline-item.esquerda h2 { color: var(--neon-cyan); }
+.timeline-item.direita h2 { color: var(--neon-magenta); }
+
+.timeline-conteudo h3 {
+    font-size: 1rem;
+    color: var(--text-white);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.timeline-conteudo p {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+}
+
