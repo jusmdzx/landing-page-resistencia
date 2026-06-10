@@ -471,11 +471,11 @@ body {
 }
 
 /* ==========================================
-   CARROSSEL: VOZES DA RESISTÊNCIA
+   CARROSSEL: VOZES DA RESISTÊNCIA E AVATARES
    ========================================== */
 .vozes-resistencia {
-    padding: 80px 0; 
-    overflow: hidden; 
+    padding: 80px 0;
+    overflow: hidden;
 }
 
 .cabecalho-vozes {
@@ -492,27 +492,27 @@ body {
 .carrossel-container {
     display: flex;
     flex-direction: row;
-    gap: 30px; 
-    padding: 20px 5%; 
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory; 
+    gap: 30px;
+    padding: 20px 5%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    scrollbar-width: none; 
+    scrollbar-width: none;
 }
 
 .carrossel-container::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
 
+/* OS CARDS DE DEPOIMENTO (Estética Editorial) */
 .card-depoimento {
-    flex: 0 0 auto; 
-    width: 350px; 
+    flex: 0 0 auto;
+    width: 350px;
     background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
-    padding: 50px 30px 40px; 
+    padding: 50px 30px 40px;
     border-radius: 8px;
-    border: none; 
     position: relative;
-    scroll-snap-align: center; 
+    scroll-snap-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }
@@ -530,19 +530,19 @@ body {
 }
 
 .card-depoimento:hover {
-    transform: translateY(-10px); 
-    box-shadow: 0 15px 40px rgba(0, 229, 255, 0.15); 
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 229, 255, 0.15);
 }
 
 .aspas {
     font-size: 3.5rem;
     color: var(--neon-magenta);
-    font-family: 'Georgia', serif; 
+    font-family: 'Georgia', serif;
     line-height: 1;
-    position: relative; 
+    position: relative;
     display: inline-block;
-    margin-bottom: -15px; 
-    text-shadow: 0 0 15px rgba(255, 0, 127, 0.6); 
+    margin-bottom: -15px;
+    text-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
 }
 
 .card-depoimento p {
@@ -550,9 +550,83 @@ body {
     color: var(--text-gray);
     line-height: 1.7;
     margin-bottom: 30px;
-    font-style: italic; 
+    font-style: italic;
     position: relative;
-    z-index: 1; 
+    z-index: 1;
+}
+
+/* PERFIL E AVATARES */
+.perfil-autor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Estilo Base para as Dimensões dos Avatares */
+.avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+/* 1. Avatares com Foto Real */
+img.avatar {
+    object-fit: cover;
+    filter: grayscale(100%);
+    border: 2px solid var(--neon-cyan);
+}
+
+/* Efeito de cor ao passar o mouse (para fotos) */
+.card-depoimento:hover img.avatar {
+    filter: grayscale(0%);
+    border-color: var(--neon-magenta);
+    box-shadow: 0 0 15px var(--neon-magenta);
+}
+
+/* 2. Avatar Anônimo (Invisível) */
+.avatar-anonimo {
+    background-color: #111;
+    border: 2px dashed #444; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* O ponto de interrogação no meio */
+.avatar-anonimo::after {
+    content: '?';
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #444;
+    font-family: var(--font-primary);
+    transition: all 0.4s ease;
+}
+
+/* Quando passa o mouse, o avatar oculto "acende" */
+.card-depoimento:hover .avatar-anonimo {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+.card-depoimento:hover .avatar-anonimo::after {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Informações do Autor (Nome e Cargo) */
+.autor-info h4 {
+    font-size: 0.95rem;
+    color: var(--text-white);
+    margin-bottom: 2px;
+    line-height: 1.2;
+}
+
+.autor-info span {
+    font-size: 0.8rem;
+    color: var(--text-gray);
 }
 
 /* ==========================================
@@ -614,4 +688,64 @@ footer {
     background-color: #050505;
     font-size: 0.9rem;
     color: #666;
+}
+
+/* ==========================================
+   RESPONSIVIDADE (MOBILE FIRST / TELAS PEQUENAS)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Reduzir respiros gerais da página */
+    .panorama-dados, .impacto-barreiras, .ponte-historica, .linha-do-tempo, .vozes-resistencia, .cta-final {
+        padding: 60px 5%;
+    }
+
+    /* 2. Empilhar os 3 cards do topo */
+    .grid-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* 3. Desativar o Zigue-Zague e empilhar a secção de dados */
+    .impacto-linha-dupla, 
+    .impacto-linha-dupla.invertida {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .bloco-texto, .bloco-texto.direita, .terminal-interativo, .painel-siglas {
+        max-width: 100%;
+        margin-left: 0;
+        text-align: left;
+    }
+
+    /* 4. A CIRURGIA NA LINHA DO TEMPO */
+    .timeline-container::after {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
+    }
+
+    .timeline-item.direita, .timeline-item.esquerda {
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-item.esquerda .timeline-ponto, 
+    .timeline-item.direita .timeline-ponto {
+        left: 12px; 
+        right: auto;
+    }
+
+    .timeline-conteudo h2 {
+        font-size: 2.5rem;
+    }
+
+    /* 5. Carrossel de Depoimentos */
+    .card-depoimento {
+        width: 85vw;
+        padding: 30px 20px;
+    }
 }
