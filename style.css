@@ -1,39 +1,39 @@
-
+/* ==========================================
+   RESET E CONFIGURAÇÕES GLOBAIS
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* VARIÁVEIS GLOBAIS (A IDENTIDADE VISUAL) */
 :root {
-    /* Cores Neon (Atitude e Destaque) */
+    /* Cores Neon e Identidade Visual */
     --neon-cyan: #00E5FF;
     --neon-magenta: #FF007F;
     --neon-purple: #9D00FF;
     
-    /* Tons de Fundo (A Atmosfera Dark) */
-    --bg-dark: #0D0D0D;    /* Fundo principal da página */
-    --bg-darker: #111111;  /* Fundo para destacar o CTA final */
+    /* Tons Escuros */
+    --bg-dark: #0D0D0D;
+    --bg-darker: #111111;
     
-    /* Tipografia (Contraste) */
+    /* Tipografia */
     --text-white: #FFFFFF;
     --text-gray: #CCCCCC;
-    
-    /* Fontes */
-    --font-primary: 'Inter', sans-serif; /* Altere para a sua fonte */
+    --font-primary: 'Inter', sans-serif; 
 }
 
-/* ESTILOS GLOBAIS BASE */
 body {
     background-color: var(--bg-dark);
     color: var(--text-white);
     font-family: var(--font-primary);
     line-height: 1.6;
-    overflow-x: hidden; /* Fundamental para evitar que a tela balance para os lados */
+    overflow-x: hidden; 
 }
 
-/* HERO SECTION */
+/* ==========================================
+   HERO SECTION (Banner Principal)
+   ========================================== */
 .hero {
     position: relative;
     width: 100%;
@@ -41,14 +41,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: 
+    background-image:
         linear-gradient(to bottom, rgba(13, 13, 13, 0.2), rgba(13, 13, 13, 1)),
-        url('visibilidade_que_transforma.png');
+        url('hero.png');
     background-size: 200%;
     background-position: center 30%;
     padding: 0 5%;
 }
-
 
 .hero-title {
     font-size: clamp(3rem, 6vw, 5rem);
@@ -81,18 +80,22 @@ body {
     color: var(--neon-cyan);
 }
 
-/* BLOCO DE DADOS */
+.text-neon-magenta { 
+    color: var(--neon-magenta); 
+    font-weight: inherit; 
+}
 
+/* ==========================================
+   PANORAMA DE DADOS (Blocos numéricos)
+   ========================================== */
 .panorama-dados {
     padding: 80px 5%;
-   
 }
 
 .grid-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-
 }
 
 .card {
@@ -123,8 +126,9 @@ body {
     color: var(--text-gray);
 }
 
-/* SESSÃO IMPACTO E BARREIRAS */
-
+/* ==========================================
+   IMPACTO E BARREIRAS (Alinhamento em Linhas)
+   ========================================== */
 .impacto-barreiras {
     padding: 100px 5%;
     width: 100%;
@@ -138,14 +142,30 @@ body {
      gap: 80px;
 }
 
-.bloco-texto{
+.impacto-linha-dupla {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-between;
+    gap: 50px;
+    width: 100%;
+    margin-bottom: 50px; 
+}
+
+.impacto-linha-dupla.invertida {
+    flex-direction: row-reverse; 
+}
+
+.bloco-texto {
     width: 100%;
     max-width: 450px;
     padding: 0 0 20px 20px;
-
     border-left: 1px dashed var(--neon-cyan);
     border-bottom: 1px dashed var(--neon-cyan);
+}
 
+.bloco-texto.direita {
+    margin-left: auto; 
 }
 
 .bloco-texto h3 {
@@ -162,30 +182,212 @@ body {
     margin-bottom: 10px;
 }
 
-.bloco-texto.direita {
-    margin-left: auto; 
+/* ==========================================
+   TERMINAL INTERATIVO (Script Roleta)
+   ========================================== */
+.terminal-interativo {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 20px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    position: relative;
 }
 
-/* PONTE HISTÓRICA (A Introdução de Junho) */
-
-.ponte-historica {
-    padding: 60px 5%;
-    text-align: center;
+.terminal-header {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 10px;
 }
 
-.texto-ponte {
-    max-width: 600px;
-    margin: 0 auto; /* Centraliza a caixa criando o "funil" visual */
-    font-size: 1.2rem;
+.luz-rec {
+    width: 8px;
+    height: 8px;
+    background-color: var(--neon-magenta);
+    border-radius: 50%;
+    animation: piscar 1.5s infinite;
+}
+
+@keyframes piscar {
+    0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--neon-magenta); }
+    50% { opacity: 0.3; box-shadow: none; }
+}
+
+.terminal-conteudo {
+    min-height: 150px;
+    transition: opacity 0.3s ease; 
+}
+
+.terminal-conteudo .dado-destaque {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--neon-cyan);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.terminal-conteudo p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+.btn-terminal {
+    width: 100%;
+    background: transparent;
+    border: 1px dashed var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 10px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-terminal:hover {
+    background: var(--neon-cyan);
+    color: #000;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* ==========================================
+   MINI-CARROSSEL DE SIGLAS (Dicionário)
+   ========================================== */
+.painel-siglas {
+    flex: 1;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 20px;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-siglas {
+    border-bottom: 1px dashed #333;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.header-siglas h4 {
+    color: var(--neon-magenta);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.header-siglas span {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    font-style: italic;
+}
+
+.carrossel-letras {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+}
+
+.carrossel-letras::-webkit-scrollbar {
+    height: 6px;
+}
+.carrossel-letras::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 4px;
+}
+.carrossel-letras::-webkit-scrollbar-thumb {
+    background: var(--neon-magenta);
+    border-radius: 4px;
+}
+
+.card-letra {
+    flex: 0 0 200px; 
+    background: #111;
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 2px solid var(--neon-magenta);
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+}
+
+.card-letra:hover {
+    transform: translateY(-3px);
+    background: #161616;
+}
+
+.card-letra h5 {
+    font-size: 3rem;
+    color: var(--neon-magenta);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.card-letra h6 {
+    font-size: 0.9rem;
+    color: var(--text-white);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.card-letra p {
+    font-size: 0.8rem;
     color: var(--text-gray);
     line-height: 1.5;
 }
 
-.text-neon-magenta { color: var(--neon-magenta); font-weight: bold; }
-.text-neon-cyan { color: var(--neon-cyan); font-weight: bold; }
+/* ==========================================
+   PONTE HISTÓRICA
+   ========================================== */
+.ponte-historica {
+    padding: 120px 5%;
+    text-align: center;
+    background-image: 
+        linear-gradient(to bottom, rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.95)),
+        url('ponte.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    border-top: 2px solid var(--neon-cyan);
+    border-bottom: 2px solid var(--neon-cyan);
+}
 
-/* A LINHA DO TEMPO HISTÓRICA */
+.texto-ponte {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
+.texto-ponte p {
+    font-size: clamp(1.5rem, 3vw, 2.2rem); 
+    color: var(--text-white);
+    line-height: 1.4;
+    font-weight: 800; 
+    margin-bottom: 0;
+}
+
+.texto-ponte .chamada-linha {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-gray);
+    margin-top: 30px;
+}
+
+/* ==========================================
+   LINHA DO TEMPO (Zigue-Zague)
+   ========================================== */
 .linha-do-tempo {
     padding: 50px 5% 100px;
 }
@@ -196,54 +398,46 @@ body {
     margin: 0 auto;
 }
 
-/*  A LINHA CENTRAL */
-
 .timeline-container::after {
     content: '';
     position: absolute;
     width: 2px;
-    background-color: #333; /* Cor da linha apagada no fundo */
+    background-color: #333; 
     top: 0;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%); /* Crava a linha exatamente no meio da tela */
+    transform: translateX(-50%); 
 }
-
-/* O ESQUELETO DE CADA ANO */
 
 .timeline-item {
     position: relative;
-    width: 50%; /* Cada bloco ocupa só metade da tela */
+    width: 50%; 
     padding: 20px 40px;
-    z-index: 1; /* Garante que o texto fique por cima da linha */
+    z-index: 1; 
 }
 
-/* JOGANDO PARA OS LADOS */
 .timeline-item.esquerda {
     left: 0;
-    text-align: right; /* O texto da esquerda alinha para a direita, colando na linha central */
+    text-align: right; 
 }
 
 .timeline-item.direita {
-    left: 50%; /* Empurra a caixa para começar na metade da tela */
+    left: 50%; 
     text-align: left;
 }
 
-/* 🟢 AS BOLINHAS NEON (Os Pontos) */
 .timeline-ponto {
     position: absolute;
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    top: 35px; /* Alinha a bolinha com o título do ano */
-    z-index: 2; /* Deixa a bolinha por cima da linha central */
+    top: 35px; 
+    z-index: 2; 
 }
 
-/* Grudando a bolinha exatamente em cima da linha central */
 .timeline-item.esquerda .timeline-ponto { right: -8px; }
 .timeline-item.direita .timeline-ponto { left: -8px; }
 
-/* O Brilho (O efeito LED) */
 .timeline-ponto.magenta {
     background-color: var(--neon-magenta);
     box-shadow: 0 0 15px var(--neon-magenta);
@@ -254,7 +448,6 @@ body {
     box-shadow: 0 0 15px var(--neon-cyan);
 }
 
-/* A TIPOGRAFIA DA LINHA DO TEMPO */
 .timeline-conteudo h2 {
     font-size: 3rem;
     font-weight: 900;
@@ -262,7 +455,6 @@ body {
     margin-bottom: 5px;
 }
 
-/* Cores dos anos dependendo do lado */
 .timeline-item.esquerda h2 { color: var(--neon-cyan); }
 .timeline-item.direita h2 { color: var(--neon-magenta); }
 
@@ -278,3 +470,148 @@ body {
     color: var(--text-gray);
 }
 
+/* ==========================================
+   CARROSSEL: VOZES DA RESISTÊNCIA
+   ========================================== */
+.vozes-resistencia {
+    padding: 80px 0; 
+    overflow: hidden; 
+}
+
+.cabecalho-vozes {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 5%;
+}
+
+.cabecalho-vozes h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.carrossel-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px; 
+    padding: 20px 5%; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth;
+    scrollbar-width: none; 
+}
+
+.carrossel-container::-webkit-scrollbar {
+    display: none; 
+}
+
+.card-depoimento {
+    flex: 0 0 auto; 
+    width: 350px; 
+    background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+    padding: 50px 30px 40px; 
+    border-radius: 8px;
+    border: none; 
+    position: relative;
+    scroll-snap-align: center; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.card-depoimento::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-depoimento:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 40px rgba(0, 229, 255, 0.15); 
+}
+
+.aspas {
+    font-size: 3.5rem;
+    color: var(--neon-magenta);
+    font-family: 'Georgia', serif; 
+    line-height: 1;
+    position: relative; 
+    display: inline-block;
+    margin-bottom: -15px; 
+    text-shadow: 0 0 15px rgba(255, 0, 127, 0.6); 
+}
+
+.card-depoimento p {
+    font-size: 1rem;
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-style: italic; 
+    position: relative;
+    z-index: 1; 
+}
+
+/* ==========================================
+   CALL TO ACTION E FOOTER
+   ========================================== */
+.cta-final {
+    background-image: 
+        linear-gradient(to bottom, rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.9)),
+        url('fundo-cta.png'); 
+    background-size: cover;
+    background-position: center;
+    padding: 120px 5%;
+    text-align: center;
+    border-top: 1px solid #1a1a1a;
+}
+
+.cta-conteudo {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-conteudo h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--text-white);
+    line-height: 1.1;
+}
+
+.cta-conteudo p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.btn-solid-cyan {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #000; 
+    background-color: #008b8b; 
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0, 139, 139, 0.5); 
+    transition: all 0.3s ease; 
+}
+
+.btn-solid-cyan:hover {
+    background-color: var(--neon-cyan); 
+    box-shadow: 0 0 25px var(--neon-cyan); 
+    transform: translateY(-3px); 
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #050505;
+    font-size: 0.9rem;
+    color: #666;
+}
