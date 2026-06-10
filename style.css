@@ -355,12 +355,13 @@ body {
 .ponte-historica {
     padding: 120px 5%;
     text-align: center;
+    /* Opacidade ajustada para o meio-termo ideal (0.7 e 0.85) */
     background-image: 
-        linear-gradient(to bottom, rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.95)),
+        linear-gradient(to bottom, rgba(13, 13, 13, 0.7), rgba(13, 13, 13, 0.85)),
         url('ponte.png'); 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; 
+    background-attachment: fixed; /* É ISSO AQUI QUE FAZ A IMAGEM SE MOVER (PARALLAX) NO PC */
     border-top: 2px solid var(--neon-cyan);
     border-bottom: 2px solid var(--neon-cyan);
 }
@@ -504,7 +505,6 @@ body {
     display: none;
 }
 
-/* OS CARDS DE DEPOIMENTO (Estética Editorial) */
 .card-depoimento {
     flex: 0 0 auto;
     width: 350px;
@@ -555,7 +555,6 @@ body {
     z-index: 1;
 }
 
-/* PERFIL E AVATARES */
 .perfil-autor {
     display: flex;
     align-items: center;
@@ -563,7 +562,6 @@ body {
     margin-top: 15px;
 }
 
-/* Estilo Base para as Dimensões dos Avatares */
 .avatar {
     width: 55px;
     height: 55px;
@@ -578,14 +576,13 @@ img.avatar {
     border: 2px solid var(--neon-cyan);
 }
 
-/* Efeito de cor ao passar o mouse (para fotos) */
 .card-depoimento:hover img.avatar {
     filter: grayscale(0%);
     border-color: var(--neon-magenta);
     box-shadow: 0 0 15px var(--neon-magenta);
 }
 
-/* 2. Avatar Anônimo (Invisível) */
+/* 2. Avatar Anônimo */
 .avatar-anonimo {
     background-color: #111;
     border: 2px dashed #444; 
@@ -595,7 +592,6 @@ img.avatar {
     position: relative;
 }
 
-/* O ponto de interrogação no meio */
 .avatar-anonimo::after {
     content: '?';
     font-size: 1.5rem;
@@ -605,7 +601,6 @@ img.avatar {
     transition: all 0.4s ease;
 }
 
-/* Quando passa o mouse, o avatar oculto "acende" */
 .card-depoimento:hover .avatar-anonimo {
     border-color: var(--neon-cyan);
     box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
@@ -616,7 +611,6 @@ img.avatar {
     text-shadow: 0 0 10px var(--neon-cyan);
 }
 
-/* Informações do Autor (Nome e Cargo) */
 .autor-info h4 {
     font-size: 0.95rem;
     color: var(--text-white);
@@ -633,11 +627,13 @@ img.avatar {
    CALL TO ACTION E FOOTER
    ========================================== */
 .cta-final {
+    /* Opacidade ajustada para o meio-termo ideal (0.65 e 0.8) */
     background-image: 
-        linear-gradient(to bottom, rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.9)),
+        linear-gradient(to bottom, rgba(13, 13, 13, 0.65), rgba(13, 13, 13, 0.8)),
         url('fundo-cta.png'); 
     background-size: cover;
     background-position: center;
+    background-attachment: fixed; /* EFEITO PARALLAX AQUI TAMBÉM */
     padding: 120px 5%;
     text-align: center;
     border-top: 1px solid #1a1a1a;
@@ -694,17 +690,22 @@ footer {
    RESPONSIVIDADE (MOBILE FIRST / TELAS PEQUENAS)
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. Reduzir respiros gerais da página */
+    .hero {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
     .panorama-dados, .impacto-barreiras, .ponte-historica, .linha-do-tempo, .vozes-resistencia, .cta-final {
         padding: 60px 5%;
     }
 
-    /* 2. Empilhar os 3 cards do topo */
     .grid-cards {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
-    /* 3. Desativar o Zigue-Zague e empilhar a secção de dados */
     .impacto-linha-dupla, 
     .impacto-linha-dupla.invertida {
         flex-direction: column;
@@ -717,7 +718,6 @@ footer {
         text-align: left;
     }
 
-    /* 4. A CIRURGIA NA LINHA DO TEMPO */
     .timeline-container::after {
         left: 20px;
     }
@@ -743,9 +743,13 @@ footer {
         font-size: 2.5rem;
     }
 
-    /* 5. Carrossel de Depoimentos */
     .card-depoimento {
         width: 85vw;
         padding: 30px 20px;
+    }
+
+    /* Correção do bug do iOS para imagens de fundo */
+    .ponte-historica, .cta-final {
+        background-attachment: scroll;
     }
 }
