@@ -44,9 +44,10 @@ body {
     background-image:
         linear-gradient(to bottom, rgba(13, 13, 13, 0.2), rgba(13, 13, 13, 1)),
         url('hero.png');
-    background-size: cover;
-        background-repeat: no-repeat;
-    background-position: top center;
+    /* As regras aqui aplicam-se ao computador. Para o telemóvel, veja o final do código */
+    background-size: cover, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top center, top center;
     padding: 0 5%;
 }
 
@@ -356,13 +357,12 @@ body {
 .ponte-historica {
     padding: 120px 5%;
     text-align: center;
-    /* Opacidade ajustada para o meio-termo ideal (0.7 e 0.85) */
     background-image: 
         linear-gradient(to bottom, rgba(13, 13, 13, 0.7), rgba(13, 13, 13, 0.85)),
         url('ponte.png'); 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* É ISSO AQUI QUE FAZ A IMAGEM SE MOVER (PARALLAX) NO PC */
+    background-attachment: fixed;
     border-top: 2px solid var(--neon-cyan);
     border-bottom: 2px solid var(--neon-cyan);
 }
@@ -628,13 +628,12 @@ img.avatar {
    CALL TO ACTION E FOOTER
    ========================================== */
 .cta-final {
-    /* Opacidade ajustada para o meio-termo ideal (0.65 e 0.8) */
     background-image: 
         linear-gradient(to bottom, rgba(13, 13, 13, 0.65), rgba(13, 13, 13, 0.8)),
         url('fundo-cta.png'); 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* EFEITO PARALLAX AQUI TAMBÉM */
+    background-attachment: fixed;
     padding: 120px 5%;
     text-align: center;
     border-top: 1px solid #1a1a1a;
@@ -674,7 +673,7 @@ img.avatar {
 }
 
 .btn-solid-cyan:hover {
-    background-color: var(--neon-cyan); 
+    background: var(--neon-cyan); 
     box-shadow: 0 0 25px var(--neon-cyan); 
     transform: translateY(-3px); 
 }
@@ -691,10 +690,34 @@ footer {
    RESPONSIVIDADE (MOBILE FIRST / TELAS PEQUENAS)
    ========================================== */
 @media (max-width: 768px) {
+    /* Melhoria responsiva do topo (Hero) - SOLUÇÃO DEFINITIVA (Múltiplas camadas) */
     .hero {
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: top center;
+        /* Removemos as amarras que prendiam o tamanho da seção */
+        min-height: auto !important;
+        /* Adicionamos padding (preenchimento) para o texto ter muito espaço */
+        padding: 120px 5% 150px 5% !important;
+
+        /* As instruções são duplicadas porque temos duas camadas de fundo (gradiente + imagem) */
+        background-image:
+            linear-gradient(to bottom, rgba(13, 13, 13, 0.4), rgba(13, 13, 13, 1)),
+            url('hero.png') !important;
+        background-size: cover, cover !important; 
+        background-repeat: no-repeat, no-repeat !important; 
+        background-position: center top, center top !important; 
+        background-attachment: scroll, scroll !important; 
+    }
+
+    /* Reduzimos o tamanho dos textos no celular para acomodar tudo melhor */
+    .hero-title {
+        font-size: clamp(2.5rem, 6vw, 4rem) !important;
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        max-width: 100% !important;
     }
 
     .panorama-dados, .impacto-barreiras, .ponte-historica, .linha-do-tempo, .vozes-resistencia, .cta-final {
